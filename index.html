@@ -13,9 +13,10 @@
         .main-container{
             background-color: black;
             color: white;
-            width: 500px;
-            height: 600px;
+            width: 560px;
+            height: 620px;
             padding: 20px;
+            margin: 30px auto;
         }
 
         h1{
@@ -34,6 +35,30 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        .buttons-container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 200px;
+        }
+
+        .buttons{
+            width: 200px;
+            height: 85px;
+            font-size: 17px;
+            border-radius: 8px;
+            border: none;
+            background-color: rgb(92, 160, 228);
+            color: black;
+            cursor: pointer;
+            margin: 10px 40px ;
+        }
+
+        .buttons:hover{
+            transition: 0.3s;
+            background-color:rgb(24, 191, 203);
+        }
     </style>
 </head>
 <body>
@@ -49,7 +74,39 @@
             type="text" id="output" class="textbox"
             placeholder="Converted text will be shown here"
         />
-        
+
+        <div class="buttons-container">
+            <button type="button" class="buttons" onclick="TextOperation('uppercase')">UPPER CASE</button>
+            <button type="button" class="buttons" onclick="TextOperation('lowercase')">LOWER CASE</button>
+            <button type="button" class="buttons" onclick="TextOperation('wordcount')">WORD COUNT</button>
+            <button type="button" class="buttons" onclick="TextOperation('charcount')">CHARACTER COUNT</button>
+        </div>
+    
     </div>
+
+    <script>
+        function TextOperation(operation){
+
+            const inputBox = document.getElementById('input');
+            const outputBox = document.getElementById('output');
+
+            switch (operation){
+                case "uppercase":
+                outputBox.value = inputBox.value.toUpperCase();
+                break;
+                case "lowercase":
+                outputBox.value = inputBox.value.toLowerCase();
+                break;
+                case "wordcount":
+                const totalWords = inputBox.value.split(" ").length;
+                outputBox.value = `There are ${totalWords} words.`;
+                break;
+                case "charcount":
+                outputBox.value = `There are ${inputBox.value.length} characters.`;
+                break;
+            }
+
+        }
+    </script>
 </body>
 </html>
